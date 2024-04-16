@@ -1,0 +1,156 @@
+/* @font-face {
+  font-family: "Spoqa Han Sans Neo";
+  src: url("/src/fonts/SpoqaHanSansNeo_OTF_subset/SpoqaHanSansNeo-Regular.woff2")
+      format("woff2"),
+    url("/src/fonts/SpoqaHanSansNeo_OTF_subset/SpoqaHanSansNeo-Regular.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+.app {
+  /* 전체app */
+  /* background-color: rgb(117, 117, 56); */
+  display: flex;
+  flex-direction: column; /* 하위항목 수직 배치 */
+  align-items: center; /* 가로축 기준으로 중앙 정렬 */
+  /* justify-content: center;  */
+  /* 세로축 기준으로 중앙 정렬 (선택적) */
+  width: 1536px;
+  height: 2200px;
+  /* height: 864px; */
+  margin: auto;
+}
+
+/* 여기서 부터 header */
+
+.header {
+  /* 헤더 부모 바 */
+  width: 80%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* background-color: rgb(70, 66, 66); */
+}
+
+.header-box {
+  width: 100%;
+  height: 100px;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: flex-end;
+}
+
+/* 로고 */
+.logo {
+  background-image: url("/public/logo.png");
+  /* background-color: #0056b3; */
+  background-size: contain;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+}
+
+.blank0 {
+  width: 50px;
+  height: 100px;
+  /* background-color: #ccc; */
+}
+.blank1 {
+  width: 100px;
+  height: 100px;
+  /* background-color: #ccc; */
+}
+.blank2 {
+  width: 100px;
+  height: 100px;
+  /* background-color: #ccc; */
+}
+.blank3 {
+  width: 100px;
+  height: 100px;
+  /* background-color: #ccc; */
+}
+.body_blank {
+  height: 100px;
+}
+.topmid {
+  width: 650px;
+  height: 85px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+.search-input {
+  width: 600px; /* 입력 필드 너비 */
+  height: 26px;
+  margin-top: auto;
+  border: 2px solid #ccc; /* 테두리 */
+  border-radius: 4px; /* 모서리 둥글게 */
+}
+
+.search-button {
+  background-color: #007bff;
+  height: 30px;
+  width: 50px;
+  margin-top: auto;
+  color: white; /* 글자색 */
+  border: none; /* 테두리 없음 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  cursor: pointer; /* 마우스 오버시 커서 변경 */
+}
+
+.search-button:hover {
+  background-color: #0056b3; /* 마우스 오버시 배경색 변경 */
+}
+
+.myPage {
+  height: 70px;
+  width: 70px;
+}
+
+.productsave {
+  height: 70px;
+  width: 70px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* 여기서 부터 body */
+.body {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+
+  /* background-color: azure; */
+}
+
+/* .category {
+  position: absolute;
+  background-image: url("/public/images/category.png");
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3;
+  right: 575px;
+  top: 130px;
+  background-size: contain; 
+  background-position: center; 
+  cursor: pointer;
+} */
+
+.footer {
+  width: 80%;
+  height: 200px;
+  background-color: rgb(70, 66, 66);
+}

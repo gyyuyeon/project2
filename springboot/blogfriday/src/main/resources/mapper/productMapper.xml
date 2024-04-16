@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blogfriday.product.repository.ProductRepository">
+
+
+	<resultMap id="productResultMap"
+		type="com.blogfriday.product.dto.ProductDTO">
+		<result property="productCode" column="product_code" />
+		<result property="userId" column="user_id" />
+		<result property="categoryCode" column="category_code" />
+		<result property="productName" column="product_name" />
+		<result property="productPrice" column="product_price" />
+		<result property="productCount" column="product_count" />
+	</resultMap>
+
+	<select id="findAll" resultMap="productResultMap">
+		SELECT * FROM product
+	</select>
+
+	<select id="findById" resultMap="productResultMap" parameterType="int">
+		SELECT * FROM product WHERE product_code = #{product_code}
+	</select>
+
+	<insert id="saveProduct"
+		parameterType="com.blogfriday.product.dto.ProductDTO"
+		useGeneratedKeys="true" keyProperty="product_code">
+		INSERT INTO product (user_id, category_code, product_name,
+		product_price, product_count,product_content_text)
+		VALUES (#{user_id}, #{category_code}, #{product_name},
+		#{product_price},
+		#{product_count},#{product_content_text})
+	</insert>
+
+	<insert id="saveImgProduct"
+		parameterType="com.blogfriday.product.dto.ProductimgDTO">
+		INSERT INTO product_img (product_code, product_img0, product_img1)
+		VALUES (#{product_code}, #{product_img0}, #{product_img1})
+	</insert>
+
+	<!-- product_name을 이용하여 product_code 조회 -->
+	<!-- <select id="findProductCodeByName"
+	resultType="com.blogfriday.product.dto.ProductDTO"
+	parameterType="com.blogfriday.product.dto.ProductDTO">
+        SELECT product_code
+        FROM product
+        WHERE product_name = #{product_name}
+    </select>-->
+
+
+	<update id="updateProduct"
+		parameterType="com.blogfriday.product.dto.ProductDTO">
+		UPDATE product
+		SET category_code = #{category_code},
+		product_name = #{product_name},
+		product_price = #{product_price},
+		product_count = #{product_count}
+		WHERE product_code = #{product_code}
+	</update>
+
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product WHERE product_code = #{product_code}
+	</delete>
+
+	<delete id="deleteProductImg" parameterType="int">
+		DELETE FROM product_img WHERE product_code = #{product_code}
+	</delete>
+
+	<select id="content" resultType="com.blogfriday.product.dto.ProductDTO"
+		parameterType="int">
+		SELECT * FROM product WHERE product_code = #{product_code}
+	</select>
+
+	<select id="contentImg"
+		resultType="com.blogfriday.product.dto.ProductimgDTO"
+		parameterType="int">
+		SELECT * FROM product_img WHERE product_code = #{product_code}
+	</select>
+
+	<!-- 
+	<select id="contentImg"
+		resultType="com.blogfriday.product.dto.ProductimgDTO"
+		parameterType="int">
+		SELECT
+		P.product_name,
+		PI.product_img0,
+		PI.product_img1,
+		PI.product_img2
+		FROM Product P
+		JOIN Product_Img PI ON P.product_code = PI.product_code
+		WHERE P.product_name = '#{product_code}';
+	</select>
+-->
+
+	<select id="searchlist" resultType="com.blogfriday.product.dto.ProductDTO"
+		parameterType="String">
+		SELECT * FROM product WHERE product_name = #{product_name}
+		ORDER BY product_price ASC
+	</select>
+
+	<select id="sellerlist" resultType="com.blogfriday.product.dto.ProductDTO"
+		parameterType="int">
+		SELECT * FROM product WHERE user_id = #{user_id}
+	</select>
+
+
+</mapper>
